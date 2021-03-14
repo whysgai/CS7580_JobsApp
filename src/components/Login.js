@@ -1,6 +1,6 @@
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import { validateUser } from "../redux/actions";
+import { userLogin } from "../redux/actions";
 import { LOGIN_STATE } from "../redux/storeConstants";
 
 let editingBegun = false;
@@ -14,7 +14,7 @@ const Login = () => {
     const dispatch = useDispatch();
 
     const handleLogin = () => {
-        dispatch(validateUser(username, password));
+        dispatch(userLogin(username, password));
         clearForm();
     }
 
