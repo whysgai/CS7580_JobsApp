@@ -7,12 +7,14 @@ import bootstrap from 'bootstrap';
 import store from "./redux/store";
 import reportWebVitals from './reportWebVitals';
 
-import App from './App';
+import App from './view/App';
 import './index.css';
 
 ReactDOM.render(
-  <React.StrictMode store={store}>
-    <App />
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>    
   </React.StrictMode>,
   document.getElementById('root')
 );

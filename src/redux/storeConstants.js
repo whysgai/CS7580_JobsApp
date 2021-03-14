@@ -8,5 +8,5 @@ export const LOGIN_STATE = {
 export const INITIAL_STATE = {
     loginState: LOGIN_STATE.LOGGED_OUT,
     user: -1,
-    todos: []
+    jobs: []
 }

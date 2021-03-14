@@ -1,0 +1,21 @@
+import {bindActionCreators, createStore} from "redux";
+import {INITIAL_STATE, LOGIN_STATE} from "./storeConstants";
+import { LOGIN_SUCCESS, INVALID_LOGIN, LOGIN_NETWORK_ERROR, LOGOUT_SUCCESS,
+    READ_JOBS, SAVE_JOB, READ_SAVED_JOBS, SORT_JOBS, UPDATE_ONBOARDING } from './actionConstants';
+
+    const rootReducer = (state = INITIAL_STATE, action) => {
+        switch (action.type) {
+            case LOGIN_SUCCESS:
+                return {
+                    ...state,
+                    loginState: LOGIN_STATE.LOGGED_IN,
+                    user: action.payload.user
+                };
+            case INVALID_LOGIN:
+                return {...state, loginState: LOGIN_STATE.INVALID_LOGIN};
+            default:
+                return state;
+        }
+    };
+
+    export default createStore(rootReducer);
