@@ -1,5 +1,5 @@
 export const LANGUAGES = {
-    ALL: "All"
+    ALL: "All",
     PYTHON: "Python",
     C: "C",
     VBA: "VBA",
