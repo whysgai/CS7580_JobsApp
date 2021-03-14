@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from "react-redux";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import bootstrap from 'bootstrap';
+
 import store from "./redux/store";
 import reportWebVitals from './reportWebVitals';
 
