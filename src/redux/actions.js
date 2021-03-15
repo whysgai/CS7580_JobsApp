@@ -21,3 +21,15 @@ export const loginSuccess = user => ({
 export const loginFail = () => ({
     type: INVALID_LOGIN
 });
+
+export const setOnboarding = (onboarding) => {
+    console.log("Action setOnboarding", onboarding);
+    const id = store.getState().user.id;
+    updateOnboarding(id, onboarding);
+    return {
+        type: UPDATE_ONBOARDING,
+        payload: {
+            onboarding
+        }        
+    }
+};

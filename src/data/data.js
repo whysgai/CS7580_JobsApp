@@ -16,7 +16,7 @@ export const LANGUAGES = {
     // ]
 };
 
-export const ONBOARDING = {
+export const ONBOARDINGS = {
     INTRO: "intro",
     SEARCHED: "searched",
     SAVED: "saved",
@@ -175,19 +175,19 @@ export const getSavedJobs = currentUser => {
 
 export const updateOnboarding = (user, training) => {
     switch (training) {
-        case ONBOARDING.INTRO:
+        case ONBOARDINGS.INTRO:
             users[user].onboarding.intro = true;
             break;
-        case ONBOARDING.SEARCHED:
+        case ONBOARDINGS.SEARCHED:
             users[user].onboarding.searched = true;
             break;
-        case ONBOARDING.SAVED:
+        case ONBOARDINGS.SAVED:
             users[user].onboarding.saved = true;
             break;
-        case ONBOARDING.SEEN:
+        case ONBOARDINGS.SEEN:
             users[user].onboarding.seen = true;
             break;
-        case ONBOARDING.SORTED:
+        case ONBOARDINGS.SORTED:
             users[user].onboarding.sorted = true;
             break;
         default:
