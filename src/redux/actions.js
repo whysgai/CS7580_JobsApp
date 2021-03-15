@@ -33,3 +33,15 @@ export const setOnboarding = (onboarding) => {
         }        
     }
 };
+
+export const readJobs = (language, id) => {
+    if (language !== null && id === null) {
+        let jobs = getJobs(language);
+        return {
+            type: READ_JOBS,
+            payload: {
+                jobs
+            }
+        }
+    }
+};

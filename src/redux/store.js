@@ -26,6 +26,11 @@ import { LOGIN_SUCCESS, INVALID_LOGIN, LOGIN_NETWORK_ERROR, LOGOUT_SUCCESS,
                             [action.payload.onboarding]: true
                         }                        
                     }
+                }
+            case READ_JOBS:
+                return {
+                    ...state,
+                    jobs: action.payload.jobs
                 }   
             default:
                 return state;
