@@ -14,12 +14,17 @@ import { LOGIN_SUCCESS, INVALID_LOGIN, LOGIN_NETWORK_ERROR, LOGOUT_SUCCESS,
             case INVALID_LOGIN:
                 return {...state, loginState: LOGIN_STATE.INVALID_LOGIN};
             case UPDATE_ONBOARDING:
-                console.log("Update onboarding", action.payload.onboarding);
+                let currentBool = state.user.onboarding[action.payload.onboarding];
+                console.log("Update onboarding", action.payload.onboarding, "from", currentBool);                
                 return {
                     ...state,
                     user: {
                         ...state.user,
-                        [action.payload.onboarding]: true
+                        onboarding: {
+                            ...state.user.onboarding,
+                            // [action.payload.onboarding]: !currentBool
+                            [action.payload.onboarding]: true
+                        }                        
                     }
                 }   
             default:
