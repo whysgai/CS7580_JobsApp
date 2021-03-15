@@ -1,6 +1,7 @@
 import {useSelector} from "react-redux";
 import Login from "../components/Login";
 import OnboardingSlides from "../components/OnboardingSlides";
+import Jobs from "../components/Jobs";
 import {LOGIN_STATE} from "../redux/storeConstants";
 import '../styles/App.css';
 
@@ -18,10 +19,7 @@ function App() {
                         !user.onboarding.intro ?
                             <OnboardingSlides />
                             :
-                            <div>
-                                {console.log("Logged in!", user)}
-                                <p>Logged in!</p>
-                            </div>
+                            <Jobs />
                     }</>
                     
             }
