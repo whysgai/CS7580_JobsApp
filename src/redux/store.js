@@ -79,7 +79,20 @@ import { jobs } from "../data/data";
                                 return job;
                         })
                     };
-                }  
+                }
+            case SORT_JOBS:
+                let sorted = state.jobs.sort(
+                    (job1, job2) => job2.saves - job1.saves
+                );
+                let deepSorted = [];
+                for (let job of sorted) {
+                    deepSorted.push(job);
+                };
+                console.log("Sorted jobs:", deepSorted);
+                return {
+                    ...state,
+                    jobs: deepSorted
+                };     
             default:
                 return state;
         }

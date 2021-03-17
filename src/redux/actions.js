@@ -66,3 +66,10 @@ export const toggleSaved = (saved, jobId) => {
     }   
     
 };
+
+export const sortBySaves = () => {
+    console.log("Sorting by saves");
+    return {
+        type: SORT_JOBS
+    }
+};
