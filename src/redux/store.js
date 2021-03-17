@@ -81,18 +81,20 @@ import { jobs } from "../data/data";
                     };
                 }
             case SORT_JOBS:
-                let sorted = state.jobs.sort(
-                    (job1, job2) => job2.saves - job1.saves
-                );
-                let deepSorted = [];
-                for (let job of sorted) {
-                    deepSorted.push(job);
-                };
-                console.log("Sorted jobs:", deepSorted);
-                return {
-                    ...state,
-                    jobs: deepSorted
-                };     
+                if (state.jobs.length > 0) {
+                    let sorted = state.jobs.sort(
+                        (job1, job2) => job2.saves - job1.saves
+                    );
+                    let deepSorted = [];
+                    for (let job of sorted) {
+                        deepSorted.push(job);
+                    };
+                    console.log("Sorted jobs:", deepSorted);
+                    return {
+                        ...state,
+                        jobs: deepSorted
+                    };
+                }                     
             default:
                 return state;
         }
