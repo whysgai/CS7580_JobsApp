@@ -1,18 +1,19 @@
-import { useSelector, useDispatch } from "react-redux";
-import { LANGUAGES } from "../data/data";
-import { readJobs } from "../redux/actions";
-import Job from "../components/Job"
+import { useSelector } from "react-redux";
+import JobButtons from "../components/JobButtons";
+import Job from "../components/Job";
+
 
 
 const Jobs = () => {
 
     const jobs = useSelector(state => state.jobs);
 
-    const dispatch = useDispatch();
+    
 
     return (
         <div>
-            <p>Lookit all these jobbz! <button onClick={() => dispatch(readJobs(LANGUAGES.ALL, null))}>All</button></p>
+            <p>Lookit all these jobbz!</p>
+            <JobButtons />
             {console.log("Jobs:", jobs)}
             {
                 jobs !== [] ?
