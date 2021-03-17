@@ -1,6 +1,6 @@
 import { LOGIN_SUCCESS, INVALID_LOGIN, LOGIN_NETWORK_ERROR, LOGOUT_SUCCESS,
     READ_JOBS, SAVE_JOB, READ_SAVED_JOBS, SORT_JOBS, UPDATE_ONBOARDING } from './actionConstants';
-import { login, getJobs, getSavedJobs, updateOnboarding } from "../data/data";
+import { login, getJobs, saveJob, unsaveJob, getSavedJobs, updateOnboarding } from "../data/data";
 import store from "./store"
 
 export const userLogin = (username, password) => {
@@ -44,4 +44,21 @@ export const readJobs = (language, id) => {
             }
         }
     }
+};
+
+export const toggleSaved = (saved, jobId) => {
+    const userId = store.getState().user.id;
+    // if (saved) {
+    //     unsaveJob(userId, jobId);
+    // } else {
+    //     saveJob(userId, jobId);
+    // }
+    return {
+        type: SAVE_JOB,
+        payload: {
+            saved,
+            job : jobId
+        }
+    }   
+    
 };

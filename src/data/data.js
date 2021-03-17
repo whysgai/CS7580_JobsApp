@@ -73,7 +73,7 @@ export const jobs = [
     //     saves : 0
     // }
     {
-        id : "001",
+        // id : "001",
         title : "Lorem",
         company: "Mann Co.",
         description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sagittis arcu id nulla vulputate, rhoncus varius magna ultricies. Aliquam laoreet libero in elit tincidunt ullamcorper. Duis in finibus lorem. Etiam quis posuere lectus, vel accumsan nunc. Suspendisse facilisis elit velit, sit amet dapibus lectus mattis in. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer venenatis a nulla vitae dapibus. Duis euismod quam interdum dui tempor malesuada.",
@@ -131,7 +131,6 @@ export const jobs = [
 ];
 
 export const login = (username, password) => {
-
     for (let user in users) {
         console.log("Matching " + username + " with " + users[user].username);
         if (username === users[user].username && password === users[user].password) {
@@ -151,7 +150,11 @@ export const login = (username, password) => {
 
 export const getJobs = language => {
     if (language === LANGUAGES.ALL) {
-        return jobs;
+        console.log("Fetching all jobs");
+        return jobs.map((job, index) => {
+            job.id = index;
+            return job;    
+        });
     } else {
         return jobs.filter((job, index) => {
             console.log("Filtering jobs", job);
@@ -164,6 +167,14 @@ export const getJobs = language => {
 export const saveJob = (user, job) => {
     users[user].saved.push(job);
     jobs[job].saves++;
+};
+
+export const unsaveJob = (user, job) => {
+    let index  = users[user].saved.indexOf(job);
+    if (index > -1) {
+        users[user].saved.splice(index, 1);
+        jobs[job].saves--;
+    }    
 };
 
 export const getSavedJobs = currentUser => {
