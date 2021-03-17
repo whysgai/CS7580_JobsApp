@@ -12,9 +12,10 @@ const JobButtons = () => {
             {/* {Object.keys(LANGUAGES).forEach((lang, index) => {console.log(lang)})} */}
             {
                 Object.keys(LANGUAGES).map((lang, index) =>
-                    <button key={index} onClick={() => dispatch(readJobs(LANGUAGES[lang], null))}>{LANGUAGES[lang]}</button>
+                    <button key={index} onClick={() => dispatch(readJobs(LANGUAGES[lang]))}>{LANGUAGES[lang]}</button>
                 )
             }
+            <button onClick={() => dispatch(readJobs(null))}>My Saved Jobs</button>
         </div>
     );
 };

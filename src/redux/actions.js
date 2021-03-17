@@ -34,14 +34,18 @@ export const setOnboarding = (onboarding) => {
     }
 };
 
-export const readJobs = (language, id) => {
-    if (language !== null && id === null) {
-        let jobs = getJobs(language);
-        return {
-            type: READ_JOBS,
-            payload: {
-                jobs
-            }
+export const readJobs = (language) => {
+    let jobs = [];
+    if (language !== null) {
+        jobs = getJobs(language);        
+    } else {
+        const userId = store.getState().user.id;
+        jobs = getSavedJobs(userId);
+    }
+    return {
+        type: READ_JOBS,
+        payload: {
+            jobs
         }
     }
 };
