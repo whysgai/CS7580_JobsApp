@@ -6,9 +6,7 @@ import Job from "../components/Job";
 
 const Jobs = () => {
 
-    const jobs = useSelector(state => state.jobs);
-
-    
+    const jobs = useSelector(state => state.jobs);    
 
     return (
         <div>
