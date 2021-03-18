@@ -51,7 +51,7 @@ export const readJobs = (language) => {
 };
 
 export const toggleSaved = (saved, jobId) => {
-    const userId = store.getState().user.id;
+    // const userId = store.getState().user.id;
     // if (saved) {
     //     unsaveJob(userId, jobId);
     // } else {
