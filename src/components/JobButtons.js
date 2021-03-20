@@ -15,7 +15,7 @@ const JobButtons = () => {
                     <button key={index} onClick={() => dispatch(readJobs(LANGUAGES[lang]))}>{LANGUAGES[lang]}</button>
                 )
             }
-            <button onClick={() => dispatch(readJobs(null))}>My Saved Jobs</button>
+            {/* <button onClick={() => dispatch(readJobs(null))}>My Saved Jobs</button> */}
             <button onClick={() => dispatch(sortBySaves())}>Sort By Popularity</button>
         </div>
     );

@@ -1,5 +1,6 @@
 import {useSelector} from "react-redux";
 import Login from "../components/Login";
+import Navbar from "../components/Navbar";
 import OnboardingSlides from "../components/OnboardingSlides";
 import Jobs from "../components/Jobs";
 import {LOGIN_STATE} from "../redux/storeConstants";
@@ -15,12 +16,19 @@ function App() {
                 loginState !== LOGIN_STATE.LOGGED_IN ?
                     <Login />
                     :
-                    <>{
-                        !user.onboarding.intro ?
-                            <OnboardingSlides />
-                            :
-                            <Jobs />
-                    }</>
+                    <>
+                        <Navbar />
+                        {
+                            !user.onboarding.intro ?
+                                <OnboardingSlides />
+                                :
+                                <>
+
+                                    <Jobs />
+                                </>
+                                
+                        }
+                    </>
                     
             }
   

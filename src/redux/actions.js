@@ -22,6 +22,10 @@ export const loginFail = () => ({
     type: INVALID_LOGIN
 });
 
+export const logout = () => ({
+    type: LOGOUT_SUCCESS
+});
+
 export const setOnboarding = (onboarding) => {
     console.log("Action setOnboarding", onboarding);
     const id = store.getState().user.id;

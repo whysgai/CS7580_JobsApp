@@ -15,6 +15,8 @@ import { jobs } from "../data/data";
                 };
             case INVALID_LOGIN:
                 return {...state, loginState: LOGIN_STATE.INVALID_LOGIN};
+            case LOGOUT_SUCCESS:
+                return INITIAL_STATE;
             case UPDATE_ONBOARDING:
                 let currentBool = state.user.onboarding[action.payload.onboarding];
                 console.log("Update onboarding", action.payload.onboarding, "from", currentBool);                
