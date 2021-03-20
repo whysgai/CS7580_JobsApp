@@ -4,14 +4,14 @@ import Navbar from "../components/Navbar";
 import OnboardingSlides from "../components/OnboardingSlides";
 import Jobs from "../components/Jobs";
 import {LOGIN_STATE} from "../redux/storeConstants";
-import '../styles/App.css';
+
 
 function App() {
     const loginState = useSelector(state => state.loginState);
     const user = useSelector(state => state.user);
 
     return (
-        <div className="App">
+        <div className="App canvas">
             {
                 loginState !== LOGIN_STATE.LOGGED_IN ?
                     <Login />

@@ -10,19 +10,21 @@ const Jobs = () => {
     const user = useSelector(state => state.user); 
 
     return (
-        <div>
+        <div className="container">
             <p>Lookit all these jobbz!</p>
             <JobButtons />
             {console.log("User:", user)}
             {console.log("Jobs:", jobs)}
-            {
-                jobs !== [] ?
-                    jobs.map((job, index) => 
-                        <Job key={index} job={job}/>
-                    )
-                    :
-                    <p>No jobs</p>
-            }
+            <div className="accordion accordion-flush" id="jobsAccordion">
+                {
+                    jobs !== [] ?
+                        jobs.map((job, index) => 
+                            <Job key={index} job={job}/>
+                        )
+                        :
+                        <p>No jobs</p>
+                }
+            </div>
         </div>
     );
 }

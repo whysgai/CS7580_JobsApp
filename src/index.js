@@ -8,6 +8,7 @@ import store from "./redux/store";
 import reportWebVitals from './reportWebVitals';
 
 import App from './view/App';
+import './styles/styles.css';
 import './index.css';
 
 ReactDOM.render(
