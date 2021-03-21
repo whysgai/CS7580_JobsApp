@@ -20,19 +20,22 @@ const JobButtons = () => {
         <div>
             {/* <button onClick={() => dispatch(readJobs(LANGUAGES.ALL, null))}>All</button> */}
             {/* {Object.keys(LANGUAGES).forEach((lang, index) => {console.log(lang)})} */}
-            <div className="btn-group" role="group">
+            <div className="btn-group" role="group" aria-label="Basic radio toggle button group">
                 {
                     Object.keys(LANGUAGES).map((lang, index) =>
-                        <div key={index}>
+                        <div key={index} className="btn btn-outline-primary">
+                            
+                            <label className="" autoComplete="off"
+                                htmlFor={`languageRadio${index}`}
+                                // key={index} className="btn btn-outline-primary"
+                            >
+                                {LANGUAGES[lang]}   
+                                                         
+                            </label>
                             <input type="radio" name="languageSelection" 
                                 className="btn-check" id={`languageRadio${index}`} 
                                 onChange={() => dispatch(readJobs(LANGUAGES[lang]))}
-                            />
-                            <label className="btn btn-outline-primary" autocomplete="off"
-                                htmlFor={`languageRadio${index}`}
-                            >
-                                {LANGUAGES[lang]}                                
-                            </label>
+                            />    
                         </div>
                     )
                 }

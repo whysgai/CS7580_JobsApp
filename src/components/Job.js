@@ -1,4 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
+import { faSquare } from "@fortawesome/free-regular-svg-icons";
+
 import { toggleSaved } from "../redux/actions";
 
 const Job = (props) => {
@@ -22,12 +26,18 @@ const Job = (props) => {
                     {
                         user.saved.includes(props.job.id) ?
                             <button
+                                className="btn btn-secondary"
                                 onClick={() => dispatch(toggleSaved(true, props.job.id))}
-                            >Saved</button>
+                            >
+                                Saved <FontAwesomeIcon icon={faCheckSquare} aria-hidden="true" />
+                            </button>
                             :
-                            <button 
+                            <button
+                                className="btn btn-outline-secondary" 
                                 onClick={() => dispatch(toggleSaved(false, props.job.id))}
-                            >Save</button>
+                            >
+                                Save <FontAwesomeIcon icon={faSquare} aria-hidden="true" />
+                            </button>
                     }
                 </div>
             </div>                   
