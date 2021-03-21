@@ -10,7 +10,7 @@ const Jobs = () => {
     const user = useSelector(state => state.user); 
 
     return (
-        <div className="container">
+        <div className="container jobs bg-light">
             <p>Lookit all these jobbz!</p>
             <JobButtons />
             {console.log("User:", user)}
