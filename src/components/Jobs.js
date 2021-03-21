@@ -10,20 +10,25 @@ const Jobs = () => {
     const user = useSelector(state => state.user); 
 
     return (
-        <div className="container jobs bg-light">
-            <p>Lookit all these jobbz!</p>
-            <JobButtons />
+        <div className="container">
             {console.log("User:", user)}
             {console.log("Jobs:", jobs)}
-            <div className="accordion accordion-flush" id="jobsAccordion">
-                {
-                    jobs !== [] ?
-                        jobs.map((job, index) => 
-                            <Job key={index} job={job}/>
-                        )
-                        :
-                        <p>No jobs</p>
-                }
+            <div className="card bg-light jobs">
+                <div className="card-header">
+                    <JobButtons />
+                </div>
+                <div className="card-body">
+                    <div className="accordion accordion-flush" id="jobsAccordion">
+                        {
+                            jobs !== [] ?
+                                jobs.map((job, index) => 
+                                    <Job key={index} job={job}/>
+                                )
+                                :
+                                <p>No jobs</p>
+                        }
+                    </div>
+                </div>
             </div>
         </div>
     );
