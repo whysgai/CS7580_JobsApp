@@ -7,7 +7,16 @@
     height: 90vh;
 }
 
+.slides {
+    margin-top: 2.5vh;
+}
+
 .jobs {
     height: 100%;
     margin-top: 2.5vh; 
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
 }

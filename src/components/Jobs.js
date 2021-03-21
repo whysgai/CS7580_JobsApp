@@ -14,7 +14,7 @@ const Jobs = () => {
             {console.log("User:", user)}
             {console.log("Jobs:", jobs)}
             <div className="card bg-light jobs">
-                <div className="card-header">
+                <div className="card-header buttons">
                     <JobButtons />
                 </div>
                 <div className="card-body">

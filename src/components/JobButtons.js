@@ -17,7 +17,7 @@ const JobButtons = () => {
     }, [selectedLanguages]);
 
     return (
-        <div>
+        <>
             {/* <button onClick={() => dispatch(readJobs(LANGUAGES.ALL, null))}>All</button> */}
             {/* {Object.keys(LANGUAGES).forEach((lang, index) => {console.log(lang)})} */}
             <div className="btn-group" role="group" aria-label="Basic radio toggle button group">
@@ -44,7 +44,7 @@ const JobButtons = () => {
             <button className="btn btn-primary" onClick={() => dispatch(sortBySaves())}>
                 Sort By Popularity <FontAwesomeIcon icon={faSortAmountDown} aria-hidden="true" />
             </button>
-        </div>
+        </>
     );
 };
 

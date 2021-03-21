@@ -18,7 +18,12 @@ import { jobs } from "../data/data";
             case LOGOUT_SUCCESS:
                 return INITIAL_STATE;
             case UPDATE_ONBOARDING:
-                let currentBool = state.user.onboarding[action.payload.onboarding];
+                let newBool;
+                if (state.user.onboarding[action.payload.onboarding]) {
+                    newBool = false;
+                } else {
+                    newBool = true;
+                }
                 console.log("Update onboarding", action.payload.onboarding, "from", currentBool);                
                 return {
                     ...state,
@@ -26,8 +31,7 @@ import { jobs } from "../data/data";
                         ...state.user,
                         onboarding: {
                             ...state.user.onboarding,
-                            // [action.payload.onboarding]: !currentBool
-                            [action.payload.onboarding]: true
+                            [action.payload.onboarding]: newBool
                         }                        
                     }
                 }

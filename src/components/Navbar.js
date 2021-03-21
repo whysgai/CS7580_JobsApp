@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
-import { readJobs, logout } from "../redux/actions";
+import { ONBOARDINGS } from "../data/data";
+import { readJobs, logout, setOnboarding } from "../redux/actions";
 
 
 const Navbar = () => {
@@ -23,6 +24,14 @@ const Navbar = () => {
                         >
                             My Saved Jobs: {user.saved.length}
                         </a>
+                        {
+                            user.onboarding.intro ?
+                                <a className="nav-link" href="#" onClick={() => dispatch(setOnboarding(ONBOARDINGS.INTRO))}>
+                                    Tutorial
+                                </a>
+                                :
+                                <></>
+                        }
                         <a className="nav-link" href="#" onClick={() => dispatch(logout())}>
                             Logout
                         </a>
