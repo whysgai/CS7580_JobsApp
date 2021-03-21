@@ -1,3 +1,8 @@
 .canvas {
     background-color: #ddfff7;
+    height: 100vh;
+}
+
+.jobs {
+    height: 100%;
 }
