@@ -14,13 +14,41 @@ const JobButtons = () => {
 
     useEffect(() => {
         // Refactor to allow searching for multiple jobs at once?
+        console.log("New selected languages", selectedLanguages);
+        dispatch(readJobs(selectedLanguages));
     }, [selectedLanguages]);
+
+    const updateSelectedJobs = (language) => {
+        if (language === "All") {
+            setSelectedLanguages([]);
+        } else {
+            let langs = [];
+            for (let sl of selectedLanguages) {
+                langs.push(sl);
+            }
+            langs.push(language);
+            setSelectedLanguages(langs);
+        }
+    }
 
     return (
         <>
             {/* <button onClick={() => dispatch(readJobs(LANGUAGES.ALL, null))}>All</button> */}
             {/* {Object.keys(LANGUAGES).forEach((lang, index) => {console.log(lang)})} */}
             <div className="btn-group" role="group" aria-label="Basic radio toggle button group">
+                <div className="btn btn-outline-primary">
+                    <label className="" autoComplete="off"
+                        htmlFor="languageRadioAll"
+                        // key={index} className="btn btn-outline-primary"
+                    >
+                        All   
+                                                    
+                    </label>
+                    <input type="checkbox" name="languageSelection" 
+                        className="btn-check" id="languageRadioAll" 
+                        onChange={() => updateSelectedJobs("All")}
+                    />
+                </div>  
                 {
                     Object.keys(LANGUAGES).map((lang, index) =>
                         <div key={index} className="btn btn-outline-primary">
@@ -32,9 +60,9 @@ const JobButtons = () => {
                                 {LANGUAGES[lang]}   
                                                          
                             </label>
-                            <input type="radio" name="languageSelection" 
+                            <input type="checkbox" name="languageSelection" 
                                 className="btn-check" id={`languageRadio${index}`} 
-                                onChange={() => dispatch(readJobs(LANGUAGES[lang]))}
+                                onChange={() => updateSelectedJobs(LANGUAGES[lang])}
                             />    
                         </div>
                     )

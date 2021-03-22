@@ -1,5 +1,5 @@
 export const LANGUAGES = {
-    ALL: "All",
+    // ALL: "All",
     PYTHON: "Python",
     C: "C",
     VBA: "VBA",
@@ -148,19 +148,28 @@ export const login = (username, password) => {
     return {};
 };
 
-export const getJobs = language => {
-    if (language === LANGUAGES.ALL) {
+export const getJobs = languages => {    
+    if (languages.length === 0 || languages === undefined || languages === null) {
         console.log("Fetching all jobs");
         return jobs.map((job, index) => {
             job.id = index;
             return job;    
         });
     } else {
-        return jobs.filter((job, index) => {
-            console.log("Filtering jobs", job);
-            job.id = index;
-            return job.languages.includes(language);        
-        });
+        let returnJobs = [];
+        for (let job of jobs) {
+            for (let lang of languages) {
+                if (job.languages.includes(lang)) {
+                    returnJobs.push(job);
+                }
+            }
+        }
+        return returnJobs;
+        // return jobs.filter((job, index) => {
+        //     console.log("Filtering jobs", job);
+        //     job.id = index;
+        //     return job.languages.includes(language);        
+        // });
     }    
 };
 

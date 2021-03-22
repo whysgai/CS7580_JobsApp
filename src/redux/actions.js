@@ -38,10 +38,11 @@ export const setOnboarding = (onboarding) => {
     }
 };
 
-export const readJobs = (language) => {
+export const readJobs = (languages) => {
     let jobs = [];
-    if (language !== null) {
-        jobs = getJobs(language);        
+    if (languages !== null) {
+        console.log("Action: getting jobs with lang", languages);
+        jobs = getJobs(languages);        
     } else {
         const userId = store.getState().user.id;
         jobs = getSavedJobs(userId);

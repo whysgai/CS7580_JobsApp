@@ -24,7 +24,7 @@ import { jobs } from "../data/data";
                 } else {
                     newBool = true;
                 }
-                console.log("Update onboarding", action.payload.onboarding, "from", currentBool);                
+                console.log("Update onboarding", action.payload.onboarding, "from", state.user.onboarding[action.payload.onboarding]);                
                 return {
                     ...state,
                     user: {
