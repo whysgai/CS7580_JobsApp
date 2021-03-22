@@ -38,6 +38,7 @@ const Job = (props) => {
     };
 
     const saveJob = (val, id) => {
+        console.log("Saving job. Id " + "  val " + val);
         dispatch(toggleSaved(val, id));
         if (!user.onboarding.saved) {
             dispatch(setOnboarding(ONBOARDINGS.SAVED));
@@ -61,31 +62,36 @@ const Job = (props) => {
                             payscale(props.job.pay)
                         }                    
                     </span>
-                    {
-                        user.saved.includes(props.job.id) ?
-                            <button
-                                className="btn btn-secondary"
-                                onClick={() => saveJob(true, props.job.id)}
-                            >
-                                Saved <FontAwesomeIcon icon={faCheckSquare} aria-hidden="true" />
-                            </button>
-                            :
-                            <button
-                                className="btn btn-outline-secondary" 
-                                onClick={() => saveJob(false, props.job.id)}
-                                ref={tooltipRef}
-                                data-bs-toggle="tooltip"
-                                data-bs-placement="top"
-                                data-bs-trigger="manual"
-                                title="Save job postings that catch your eye to view later."
-                                onPointerEnter={() => toggleTooltip(true)}
-                                onFocus={() => toggleTooltip(true)}
-                                onPointerOut={() => toggleTooltip(false)}
-                                onBlur={() => toggleTooltip(false)}
-                            >
-                                Save <FontAwesomeIcon icon={faSquare} aria-hidden="true" />
-                            </button>
-                    }
+                    <span
+                        ref={tooltipRef}
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        data-bs-trigger="manual"
+                        title="Save job postings to view later."
+                        onPointerEnter={() => toggleTooltip(true)}
+                        onFocus={() => toggleTooltip(true)}
+                        onPointerOut={() => toggleTooltip(false)}
+                        onBlur={() => toggleTooltip(false)}
+                    >
+                        {
+                            user.saved.includes(props.job.id) ?
+                                <button
+                                    className="btn btn-secondary"
+                                    onClick={() => saveJob(true, props.job.id)}
+                                    //onClick={() => dispatch(toggleSaved(true, props.job.id))}
+                                >
+                                    Saved <FontAwesomeIcon icon={faCheckSquare} aria-hidden="true" />
+                                </button>
+                                :
+                                <button
+                                    className="btn btn-outline-secondary" 
+                                    onClick={() => saveJob(false, props.job.id)}
+                                    //onClick={() => dispatch(toggleSaved(false, props.job.id))}
+                                >
+                                    Save <FontAwesomeIcon icon={faSquare} aria-hidden="true" />
+                                </button>
+                        }
+                    </span>
                 </div>
             </div>                   
         </div>
