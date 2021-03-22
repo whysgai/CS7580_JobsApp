@@ -33,8 +33,9 @@ const JobButtons = () => {
                 tooltipOpen ? bsTooltip.show() : bsTooltip.hide();
             }
         }
-    })
+    });
 
+    // Add selected jobs to new array (deep copy) before fetching from server
     const updateSelectedJobs = (language) => {
         if (language === "All") {
             setSelectedLanguages([]);
@@ -46,12 +47,15 @@ const JobButtons = () => {
             langs.push(language);
             setSelectedLanguages(langs);
         }
-    }
+    };
 
+    // Sort the jobs and update user variable for tooltip
     const sortJobs = () => {
         dispatch(sortBySaves());
-        dispatch(setOnboarding(ONBOARDINGS.SORTED));
-    }
+        if (!user.onboarding.sorted) {
+            dispatch(setOnboarding(ONBOARDINGS.SORTED));
+        }        
+    };
 
     return (
         <>
@@ -95,7 +99,7 @@ const JobButtons = () => {
                 data-bs-toggle="tooltip"
                 data-bs-placement="top"
                 data-bs-trigger="manual"
-                title="Use these buttons to filter which tasks are shown."
+                title="Sort viewed tasks by how frequently they are saved."
                 onPointerEnter={() => toggleTooltip(true)}
                 onFocus={() => toggleTooltip(true)}
                 onPointerOut={() => toggleTooltip(false)}

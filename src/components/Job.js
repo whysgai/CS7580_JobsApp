@@ -1,15 +1,33 @@
+import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Tooltip } from "bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
 import { faSquare } from "@fortawesome/free-regular-svg-icons";
-
-import { toggleSaved } from "../redux/actions";
+import { ONBOARDINGS } from "../data/data";
+import { toggleSaved, setOnboarding } from "../redux/actions";
 
 const Job = (props) => {
-
     const user = useSelector(state => state.user);
-
     const dispatch = useDispatch();
+    const [tooltipOpen, toggleTooltip] = useState(false);
+    const tooltipRef = useRef();
+
+    // Tooltip useEffect
+    useEffect(() => {
+        let tooltip = tooltipRef.current;
+        let bsTooltip = Tooltip.getInstance(tooltip)
+        if (!bsTooltip) {
+            bsTooltip = new Tooltip(tooltip);
+        }
+        else {
+            if (user.onboarding.saved) {
+                bsTooltip.hide();
+            } else {
+                tooltipOpen ? bsTooltip.show() : bsTooltip.hide();
+            }
+        }
+    });
 
     const payscale = (pay) => {
         let scale = "";
@@ -17,6 +35,13 @@ const Job = (props) => {
             scale += "$";
         }
         return scale;
+    };
+
+    const saveJob = (val, id) => {
+        dispatch(toggleSaved(val, id));
+        if (!user.onboarding.saved) {
+            dispatch(setOnboarding(ONBOARDINGS.SAVED));
+        }
     }
 
     return (
@@ -40,14 +65,23 @@ const Job = (props) => {
                         user.saved.includes(props.job.id) ?
                             <button
                                 className="btn btn-secondary"
-                                onClick={() => dispatch(toggleSaved(true, props.job.id))}
+                                onClick={() => saveJob(true, props.job.id)}
                             >
                                 Saved <FontAwesomeIcon icon={faCheckSquare} aria-hidden="true" />
                             </button>
                             :
                             <button
                                 className="btn btn-outline-secondary" 
-                                onClick={() => dispatch(toggleSaved(false, props.job.id))}
+                                onClick={() => saveJob(false, props.job.id)}
+                                ref={tooltipRef}
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                data-bs-trigger="manual"
+                                title="Save job postings that catch your eye to view later."
+                                onPointerEnter={() => toggleTooltip(true)}
+                                onFocus={() => toggleTooltip(true)}
+                                onPointerOut={() => toggleTooltip(false)}
+                                onBlur={() => toggleTooltip(false)}
                             >
                                 Save <FontAwesomeIcon icon={faSquare} aria-hidden="true" />
                             </button>
