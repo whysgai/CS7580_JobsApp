@@ -1,22 +1,39 @@
-import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useState, useEffect, useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Tooltip } from "bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSortAmountDown } from "@fortawesome/free-solid-svg-icons";
-import { LANGUAGES } from "../data/data";
-import { sortBySaves, readJobs } from "../redux/actions";
+import { LANGUAGES, ONBOARDINGS } from "../data/data";
+import { sortBySaves, readJobs, setOnboarding } from "../redux/actions";
 
 const JobButtons = () => {
-
-    // If searching for multiple languages, store here?
-    const [selectedLanguages, setSelectedLanguages] = useState([]);
-
+    const user = useSelector(state => state.user);
     const dispatch = useDispatch();
+    const [selectedLanguages, setSelectedLanguages] = useState([]);    
+    const [tooltipOpen, toggleTooltip] = useState(false);
+    const tooltipRef = useRef();
 
+    // Fetch jobs when the selectedLanguages are updated
     useEffect(() => {
-        // Refactor to allow searching for multiple jobs at once?
         console.log("New selected languages", selectedLanguages);
         dispatch(readJobs(selectedLanguages));
     }, [selectedLanguages]);
+
+    // Tooltip useEffect
+    useEffect(() => {
+        let tooltip = tooltipRef.current;
+        let bsTooltip = Tooltip.getInstance(tooltip)
+        if (!bsTooltip) {
+            bsTooltip = new Tooltip(tooltip);
+        }
+        else {
+            if (user.onboarding.sorted) {
+                bsTooltip.hide();
+            } else {
+                tooltipOpen ? bsTooltip.show() : bsTooltip.hide();
+            }
+        }
+    })
 
     const updateSelectedJobs = (language) => {
         if (language === "All") {
@@ -29,6 +46,11 @@ const JobButtons = () => {
             langs.push(language);
             setSelectedLanguages(langs);
         }
+    }
+
+    const sortJobs = () => {
+        dispatch(sortBySaves());
+        dispatch(setOnboarding(ONBOARDINGS.SORTED));
     }
 
     return (
@@ -57,8 +79,7 @@ const JobButtons = () => {
                                 htmlFor={`languageRadio${index}`}
                                 // key={index} className="btn btn-outline-primary"
                             >
-                                {LANGUAGES[lang]}   
-                                                         
+                                {LANGUAGES[lang]}       
                             </label>
                             <input type="checkbox" name="languageSelection" 
                                 className="btn-check" id={`languageRadio${index}`} 
@@ -69,7 +90,17 @@ const JobButtons = () => {
                 }
             </div>
             {/* <button onClick={() => dispatch(readJobs(null))}>My Saved Jobs</button> */}
-            <button className="btn btn-primary" onClick={() => dispatch(sortBySaves())}>
+            <button className="btn btn-primary" onClick={() => sortJobs()}
+                ref={tooltipRef}
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                data-bs-trigger="manual"
+                title="Use these buttons to filter which tasks are shown."
+                onPointerEnter={() => toggleTooltip(true)}
+                onFocus={() => toggleTooltip(true)}
+                onPointerOut={() => toggleTooltip(false)}
+                onBlur={() => toggleTooltip(false)}
+            >
                 Sort By Popularity <FontAwesomeIcon icon={faSortAmountDown} aria-hidden="true" />
             </button>
         </>
