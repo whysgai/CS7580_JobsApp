@@ -21,6 +21,16 @@
     margin-top: 2.5vh;
 }
 
+.carousel~button {
+    margin-top: 1vh;
+}
+
+.slide {
+    background-color: #3e6b58;
+    width: 100%;
+    height: 15vh;
+}
+
 .jobs {
     height: 100%;
     margin-top: 2.5vh; 
