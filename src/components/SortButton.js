@@ -48,7 +48,8 @@ const SortButton = () => {
             onPointerOut={() => toggleTooltip(false)}
             onBlur={() => toggleTooltip(false)}
         >
-            Sort By Popularity <FontAwesomeIcon icon={faSortAmountDown} aria-hidden="true" />
+            Sort By Popularity&nbsp;
+            <FontAwesomeIcon icon={faSortAmountDown} aria-hidden="true" />
         </button>
     );
 }

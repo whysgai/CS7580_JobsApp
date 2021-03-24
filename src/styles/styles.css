@@ -1,11 +1,16 @@
 .canvas {
-    background-color: #ddfff7;
+    /* background-color: #ddfff7; */
+    background-color: #a8c4b8;
     height: 100vh;
 }
 
 .nav-container {
     display: flex;
     justify-content: space-between;
+}
+
+.logo {
+    color: #3e6b58 !important;
 }
 
 .container-height {
@@ -22,6 +27,16 @@
 }
 
 .buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.job-header {
+    display: flex;
+    justify-content: space-around;
+}
+
+.job-details {
     display: flex;
     justify-content: space-between;
 }

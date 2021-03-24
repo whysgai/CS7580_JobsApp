@@ -38,7 +38,7 @@ const Navbar = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container container-fluid nav-container">
-                <span className="navbar-brand" >JOBZ</span>
+                <span className="navbar-brand logo" >JOBZ</span>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -58,7 +58,8 @@ const Navbar = () => {
                             onPointerOut={() => toggleTooltip(false)}
                             onBlur={() => toggleTooltip(false)}
                         >
-                            My Saved Jobs: {user.saved.length}
+                            My Saved Jobs:&nbsp;
+                            {user.saved.length}
                         </a>
                         {
                             user.onboarding.intro ?
