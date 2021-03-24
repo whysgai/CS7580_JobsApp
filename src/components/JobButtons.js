@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSortAmountDown } from "@fortawesome/free-solid-svg-icons";
 import { LANGUAGES, ONBOARDINGS } from "../data/data";
 import { sortBySaves, readJobs, setOnboarding } from "../redux/actions";
+import SortButton from "./SortButton";
 
 const JobButtons = () => {
     const user = useSelector(state => state.user);
@@ -20,20 +21,20 @@ const JobButtons = () => {
     }, [selectedLanguages]);
 
     // Tooltip useEffect
-    useEffect(() => {
-        let tooltip = tooltipRef.current;
-        let bsTooltip = Tooltip.getInstance(tooltip)
-        if (!bsTooltip) {
-            bsTooltip = new Tooltip(tooltip);
-        }
-        else {
-            if (user.onboarding.sorted) {
-                bsTooltip.hide();
-            } else {
-                tooltipOpen ? bsTooltip.show() : bsTooltip.hide();
-            }
-        }
-    });
+    // useEffect(() => {
+    //     let tooltip = tooltipRef.current;
+    //     let bsTooltip = Tooltip.getInstance(tooltip)
+    //     if (!bsTooltip) {
+    //         bsTooltip = new Tooltip(tooltip);
+    //     }
+    //     else {
+    //         if (user.onboarding.sorted) {
+    //             bsTooltip.hide();
+    //         } else {
+    //             tooltipOpen ? bsTooltip.show() : bsTooltip.hide();
+    //         }
+    //     }
+    // });
 
     // Add selected jobs to new array (deep copy) before fetching from server
     const updateSelectedJobs = (language) => {
@@ -49,13 +50,13 @@ const JobButtons = () => {
         }
     };
 
-    // Sort the jobs and update user variable for tooltip
-    const sortJobs = () => {
-        dispatch(sortBySaves());
-        if (!user.onboarding.sorted) {
-            dispatch(setOnboarding(ONBOARDINGS.SORTED));
-        }        
-    };
+    // // Sort the jobs and update user variable for tooltip
+    // const sortJobs = () => {
+    //     dispatch(sortBySaves());
+    //     if (!user.onboarding.sorted) {
+    //         dispatch(setOnboarding(ONBOARDINGS.SORTED));
+    //     }        
+    // };
 
     return (
         <>
@@ -93,20 +94,7 @@ const JobButtons = () => {
                     )
                 }
             </div>
-            {/* <button onClick={() => dispatch(readJobs(null))}>My Saved Jobs</button> */}
-            <button className="btn btn-primary" onClick={() => sortJobs()}
-                ref={tooltipRef}
-                data-bs-toggle="tooltip"
-                data-bs-placement="top"
-                data-bs-trigger="manual"
-                title="Sort viewed tasks by how frequently they are saved."
-                onPointerEnter={() => toggleTooltip(true)}
-                onFocus={() => toggleTooltip(true)}
-                onPointerOut={() => toggleTooltip(false)}
-                onBlur={() => toggleTooltip(false)}
-            >
-                Sort By Popularity <FontAwesomeIcon icon={faSortAmountDown} aria-hidden="true" />
-            </button>
+            <SortButton />
         </>
     );
 };
