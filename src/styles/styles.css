@@ -31,6 +31,21 @@
     height: 15vh;
 }
 
+@media (max-width: 450px) {
+    .slides {
+        min-height: 80vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .slide {
+        background-color: #3e6b58;
+        width: 100%;
+        height: 60vh;
+    }
+}
+
 .jobs {
     height: 100%;
     margin-top: 2.5vh; 

@@ -36,7 +36,8 @@ const OnboardingSlides = () => {
                         <div className="carousel-item" data-bs-interval="false">
                             <div className="slide">
                                 <img src="..." className="d-block w-100" alt="..."/>
-                                <div className="carousel-caption d-none d-md-block">
+                                {/* <div className="carousel-caption d-none d-md-block"> */}
+                                <div className="carousel-caption">
                                     <h5>Save for later</h5>
                                     <p>Save interesting postings for later review.</p>
                                 </div>
@@ -45,7 +46,7 @@ const OnboardingSlides = () => {
                         <div className="carousel-item" data-bs-interval="false">
                             <div className="slide">
                                 <img src="..." className="d-block w-100" alt="..."/>
-                                <div className="carousel-caption d-none d-md-block">
+                                <div className="carousel-caption">
                                     <h5>Look for langugage</h5>
                                     <p>Postings are tagged with relevant promgramming languages: filter by one or several.</p>
                                 </div>
@@ -54,7 +55,7 @@ const OnboardingSlides = () => {
                         <div className="carousel-item active" data-bs-interval="false">
                             <div className="slide">
                                 <img src="..." className="d-block w-100" alt="..."/>
-                                <div className="carousel-caption d-none d-md-block">
+                                <div className="carousel-caption">
                                     <h5>Welcome to JOBZ</h5>
                                     <p>View job postings from companies around the internet.</p>
                                 </div>
