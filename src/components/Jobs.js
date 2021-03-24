@@ -10,7 +10,7 @@ const Jobs = () => {
     const user = useSelector(state => state.user); 
 
     return (
-        <div className="container">
+        <div className="container container-height">
             {console.log("User:", user)}
             {console.log("Jobs:", jobs)}
             <div className="card bg-light jobs">

@@ -48,6 +48,9 @@ const JobButtons = () => {
             langs.push(language);
             setSelectedLanguages(langs);
         }
+        if (!user.onboarding.searched) {
+            dispatch(setOnboarding(ONBOARDINGS.SEARCHED));
+        }
     };
 
     // // Sort the jobs and update user variable for tooltip

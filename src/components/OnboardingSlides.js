@@ -24,7 +24,7 @@ const OnboardingSlides = () => {
     }
 
     return (
-        <div className="container">
+        <div className="container container-height">
             <div className="card card-body slides">
                 <p>Slide Count: {slideCount}</p>
 
@@ -77,7 +77,7 @@ const OnboardingSlides = () => {
                             <></>
                     }
                 </div>
-                <button onClick={() => dispatch(setOnboarding(ONBOARDINGS.INTRO))}>{!slidesDone ? "Skip" : "Done"}</button>
+                <button className="btn btn-secondary" onClick={() => dispatch(setOnboarding(ONBOARDINGS.INTRO))}>{!slidesDone ? "Skip" : "Done"}</button>
             </div>
         </div>
     )
