@@ -37,7 +37,7 @@ const SortButton = () => {
     };
 
     return (
-        <button className="btn btn-primary" onClick={() => sortJobs()}
+        <button className="btn btn-primary sort-button" onClick={() => sortJobs()}
             ref={tooltipRef}
             data-bs-toggle="tooltip"
             data-bs-placement="top"

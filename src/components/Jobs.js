@@ -17,7 +17,7 @@ const Jobs = () => {
                 <div className="card-header buttons">
                     <JobButtons />
                 </div>
-                <div className="card-body">
+                <div className="card-body jobs-list">
                     <div className="accordion accordion-flush" id="jobsAccordion">
                         {
                             jobs !== [] ?

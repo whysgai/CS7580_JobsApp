@@ -4,6 +4,12 @@
     height: 100vh;
 }
 
+@media (max-width: 450px) {
+    .login-button {
+        width: 100%;
+    }
+}
+
 .nav-container {
     display: flex;
     justify-content: space-between;
@@ -51,6 +57,18 @@
     margin-top: 2.5vh; 
 }
 
+.jobs-list {
+    overflow-x: scroll;
+}
+
+.job-buttons {
+    display: flex;
+    /* justify-content: space-between;
+    align-items: center;
+    align-content: center; */
+    flex-wrap: wrap;
+}
+
 .buttons {
     display: flex;
     justify-content: space-between;
@@ -64,4 +82,36 @@
 .job-details {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 800px) {
+    .jobs {
+        max-height: 80vh;
+    }
+    .job-buttons {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .sort-button {
+        width: 100%;
+        margin-top: 1vh;
+    }
+    .save-button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    .filter-buttons {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .job-details {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
 }

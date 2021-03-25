@@ -63,7 +63,7 @@ const Job = (props) => {
                                 payscale(props.job.pay)
                             }                    
                         </h5>
-                        <span
+                        <span className="save-button"
                             ref={tooltipRef}
                             data-bs-toggle="tooltip"
                             data-bs-placement="top"
@@ -77,7 +77,7 @@ const Job = (props) => {
                             {
                                 user.saved.includes(props.job.id) ?
                                     <button
-                                        className="btn btn-secondary"
+                                        className="btn btn-secondary save-button"
                                         onClick={() => saveJob(true, props.job.id)}
                                         //onClick={() => dispatch(toggleSaved(true, props.job.id))}
                                     >
@@ -86,7 +86,7 @@ const Job = (props) => {
                                     </button>
                                     :
                                     <button
-                                        className="btn btn-outline-secondary" 
+                                        className="btn btn-outline-secondary save-button" 
                                         onClick={() => saveJob(false, props.job.id)}
                                         //onClick={() => dispatch(toggleSaved(false, props.job.id))}
                                     >

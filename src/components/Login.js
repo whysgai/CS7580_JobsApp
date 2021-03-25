@@ -73,7 +73,7 @@ const Login = () => {
             </div>
             <div className="row">
                 <div className="col">
-                    <button className="btn btn-secondary float-end" onClick={handleLogin}>
+                    <button className="btn btn-secondary float-end login-button" onClick={handleLogin}>
                         Log in
                     </button>
                 </div>

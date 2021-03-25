@@ -62,23 +62,10 @@ const JobButtons = () => {
     // };
 
     return (
-        <>
+        <div className="job-buttons">
             {/* <button onClick={() => dispatch(readJobs(LANGUAGES.ALL, null))}>All</button> */}
             {/* {Object.keys(LANGUAGES).forEach((lang, index) => {console.log(lang)})} */}
-            <div className="btn-group" role="group" aria-label="Basic radio toggle button group">
-                <div className="btn btn-outline-primary">
-                    <label className="" autoComplete="off"
-                        htmlFor="languageRadioAll"
-                        // key={index} className="btn btn-outline-primary"
-                    >
-                        All   
-                                                    
-                    </label>
-                    <input type="checkbox" name="languageSelection" 
-                        className="btn-check" id="languageRadioAll" 
-                        onChange={() => updateSelectedJobs("All")}
-                    />
-                </div>  
+            <div className="btn-group filter-buttons" role="group" aria-label="Basic checkbox toggle button group"> 
                 {
                     Object.keys(LANGUAGES).map((lang, index) =>
                         <div key={index} className="btn btn-outline-primary">
@@ -96,9 +83,21 @@ const JobButtons = () => {
                         </div>
                     )
                 }
+                <div className="btn btn-outline-primary">
+                    <label className="" autoComplete="off"
+                        htmlFor="languageRadioAll"
+                        // key={index} className="btn btn-outline-primary"
+                    >
+                        All                        
+                    </label>
+                    <input type="checkbox" name="languageSelection" 
+                        className="btn-check" id="languageRadioAll" 
+                        onChange={() => updateSelectedJobs("All")}
+                    />
+                </div>
             </div>
             <SortButton />
-        </>
+        </div>
     );
 };
 
