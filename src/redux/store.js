@@ -18,12 +18,6 @@ import { jobs } from "../data/data";
             case LOGOUT_SUCCESS:
                 return INITIAL_STATE;
             case UPDATE_ONBOARDING:
-                // let newBool;
-                // if (state.user.onboarding[action.payload.onboarding] === true) {
-                //     newBool = false;
-                // } else {
-                //     newBool = true;
-                // }
                 console.log("Update onboarding", action.payload.value, "from", state.user.onboarding[action.payload.onboarding]);                
                 return {
                     ...state,
@@ -41,12 +35,6 @@ import { jobs } from "../data/data";
                     jobs: action.payload.jobs
                 }  
             case SAVE_JOB:
-                // let job = {}
-                // for (let j in state.jobs) {
-                //     if (action.payload.job === j.id) {
-                //         job = j;
-                //     }
-                // }
                 console.log("Reducer calling SAVE_JOB");
                 console.log("Saved", action.payload.saved);
                 console.log("Job", action.payload.job);
@@ -57,7 +45,6 @@ import { jobs } from "../data/data";
                         ...state,
                         user: {
                             ...state.user,
-                            // saved: _.cloneDeep(state.user.saved.filter(job => job !== action.payload.job))
                             saved: state.user.saved.filter(job => job !== action.payload.job)                
                         },
                         jobs : state.jobs.map(job => {

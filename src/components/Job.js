@@ -43,7 +43,7 @@ const Job = (props) => {
         if (!user.onboarding.saved) {
             dispatch(setOnboarding(ONBOARDINGS.SAVED, true));
         }
-    }
+    };
 
     return (
         <div className="accordion-item">
