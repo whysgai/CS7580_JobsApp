@@ -26,7 +26,7 @@ const OnboardingSlides = () => {
     return (
         <div className="container container-height">
             <div className="card card-body slides">
-                <div id="carouselExampleDark" className="carousel carousel-dark" data-bs-ride="true">
+                <div id="carouselExampleDark" className="carousel carousel-light" data-bs-ride="true">
                     <div className="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
                         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -35,9 +35,9 @@ const OnboardingSlides = () => {
                     <div className="carousel-inner">
                         <div className="carousel-item" data-bs-interval="false">
                             <div className="slide">
-                                <img src="..." className="d-block w-100" alt="..."/>
+                                <img src={process.env.PUBLIC_URL + "/media/SaveForLater_iPad.png"} className="slide-img" alt="Save interesting postings for later review."/>
                                 {/* <div className="carousel-caption d-none d-md-block"> */}
-                                <div className="carousel-caption">
+                                <div className="carousel-caption text-dark">
                                     <h5>Save for later</h5>
                                     <p>Save interesting postings for later review.</p>
                                 </div>
@@ -45,8 +45,8 @@ const OnboardingSlides = () => {
                         </div>
                         <div className="carousel-item" data-bs-interval="false">
                             <div className="slide">
-                                <img src="..." className="d-block w-100" alt="..."/>
-                                <div className="carousel-caption">
+                                <img src={process.env.PUBLIC_URL + "/media/FilterLanguage_iPad.png"} className="slide-img" alt="Postings are tagged with relevant promgramming languages: filter by one or several."/>
+                                <div className="carousel-caption text-dark">
                                     <h5>Look for langugage</h5>
                                     <p>Postings are tagged with relevant promgramming languages: filter by one or several.</p>
                                 </div>
@@ -54,8 +54,8 @@ const OnboardingSlides = () => {
                         </div>
                         <div className="carousel-item active" data-bs-interval="false">
                             <div className="slide">
-                                <img src="..." className="d-block w-100" alt="..."/>
-                                <div className="carousel-caption">
+                                <img src={process.env.PUBLIC_URL + "/media/ViewList_iPad.png"} className="slide-img" alt="View job postings from companies around the internet."/>
+                                <div className="carousel-caption text-dark">
                                     <h5>Welcome to JOBZ</h5>
                                     <p>View job postings from companies around the internet.</p>
                                 </div>

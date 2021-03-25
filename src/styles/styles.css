@@ -34,7 +34,13 @@
 .slide {
     background-color: #3e6b58;
     width: 100%;
-    height: 20vh;
+    min-width: fit-content;
+}
+
+.slide-img {
+    display: block;
+    width: 100%;
+    max-height: fit-content;
 }
 
 @media (max-width: 450px) {
