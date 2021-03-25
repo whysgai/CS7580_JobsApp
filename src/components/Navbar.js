@@ -63,7 +63,7 @@ const Navbar = () => {
                         </a>
                         {
                             user.onboarding.intro ?
-                                <a className="nav-link" href="#" onClick={() => dispatch(setOnboarding(ONBOARDINGS.INTRO))}>
+                                <a className="nav-link" href="#" onClick={() => dispatch(setOnboarding(ONBOARDINGS.INTRO, false))}>
                                     Tutorial
                                 </a>
                                 :

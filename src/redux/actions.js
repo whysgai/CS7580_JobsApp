@@ -26,14 +26,15 @@ export const logout = () => ({
     type: LOGOUT_SUCCESS
 });
 
-export const setOnboarding = (onboarding) => {
+export const setOnboarding = (onboarding, value) => {
     console.log("Action setOnboarding", onboarding);
     const id = store.getState().user.id;
-    // updateOnboarding(id, onboarding);
+    updateOnboarding(id, onboarding, value);
     return {
         type: UPDATE_ONBOARDING,
         payload: {
-            onboarding
+            onboarding,
+            value
         }        
     }
 };

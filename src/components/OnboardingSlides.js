@@ -65,8 +65,8 @@ const OnboardingSlides = () => {
                     {
                         slideCount > 0 ?
                             <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"  data-bs-slide="prev" onClick={() => advance(false)}>
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
+                                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span className="visually-hidden">Previous</span>
                             </button>
                             :
                             <></>
@@ -81,7 +81,7 @@ const OnboardingSlides = () => {
                             <></>
                     }
                 </div>
-                <button className="btn btn-secondary skip-done" onClick={() => dispatch(setOnboarding(ONBOARDINGS.INTRO))}>{!slidesDone ? "Skip" : "Done"}</button>
+                <button className="btn btn-secondary skip-done" onClick={() => dispatch(setOnboarding(ONBOARDINGS.INTRO, true))}>{!slidesDone ? "Skip" : "Done"}</button>
             </div>
         </div>
     )

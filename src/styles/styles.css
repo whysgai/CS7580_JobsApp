@@ -34,7 +34,7 @@
 .slide {
     background-color: #3e6b58;
     width: 100%;
-    height: 15vh;
+    height: 20vh;
 }
 
 @media (max-width: 450px) {

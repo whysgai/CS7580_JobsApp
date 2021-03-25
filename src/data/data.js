@@ -194,27 +194,22 @@ export const getSavedJobs = currentUser => {
     return savedJobs;
 };
 
-export const updateOnboarding = (user, training) => {
+export const updateOnboarding = (user, training, value) => {
     switch (training) {
         case ONBOARDINGS.INTRO:
-            if (users[user].onboarding.intro === true) {
-                users[user].onboarding.intro = false;
-            } else {
-                users[user].onboarding.intro = true
-            }
-            // users[user].onboarding.intro = !users[user].onboarding.intro;
+            users[user].onboarding.intro = value;
             break;
         case ONBOARDINGS.SEARCHED:
-            users[user].onboarding.searched = true;
+            users[user].onboarding.searched = value;
             break;
         case ONBOARDINGS.SAVED:
-            users[user].onboarding.saved = true;
+            users[user].onboarding.saved = value;
             break;
         case ONBOARDINGS.SEEN:
-            users[user].onboarding.seen = true;
+            users[user].onboarding.seen = value;
             break;
         case ONBOARDINGS.SORTED:
-            users[user].onboarding.sorted = true;
+            users[user].onboarding.sorted = value;
             break;
         default:
             break;

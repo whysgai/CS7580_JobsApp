@@ -18,20 +18,20 @@ import { jobs } from "../data/data";
             case LOGOUT_SUCCESS:
                 return INITIAL_STATE;
             case UPDATE_ONBOARDING:
-                let newBool;
-                if (state.user.onboarding[action.payload.onboarding] === true) {
-                    newBool = false;
-                } else {
-                    newBool = true;
-                }
-                console.log("Update onboarding", newBool, "from", state.user.onboarding[action.payload.onboarding]);                
+                // let newBool;
+                // if (state.user.onboarding[action.payload.onboarding] === true) {
+                //     newBool = false;
+                // } else {
+                //     newBool = true;
+                // }
+                console.log("Update onboarding", action.payload.value, "from", state.user.onboarding[action.payload.onboarding]);                
                 return {
                     ...state,
                     user: {
                         ...state.user,
                         onboarding: {
                             ...state.user.onboarding,
-                            [action.payload.onboarding]: newBool
+                            [action.payload.onboarding]: action.payload.value
                         }                        
                     }
                 }
