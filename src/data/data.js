@@ -176,6 +176,7 @@ export const getJobs = languages => {
 export const saveJob = (user, job) => {
     users[user].saved.push(job);
     jobs[job].saves++;
+    // console.log("From data: user " + users[user].saved + " job " + jobs[job].saves);
 };
 
 export const unsaveJob = (user, job) => {
@@ -183,7 +184,8 @@ export const unsaveJob = (user, job) => {
     if (index > -1) {
         users[user].saved.splice(index, 1);
         jobs[job].saves--;
-    }    
+    }
+    // console.log("From data: user " + users[user].saved + " job " + jobs[job].saves);    
 };
 
 export const getSavedJobs = currentUser => {

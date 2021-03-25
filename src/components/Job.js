@@ -41,7 +41,7 @@ const Job = (props) => {
         console.log("Saving job. Id " + "  val " + val);
         dispatch(toggleSaved(val, id));
         if (!user.onboarding.saved) {
-            dispatch(setOnboarding(ONBOARDINGS.SAVED));
+            dispatch(setOnboarding(ONBOARDINGS.SAVED, true));
         }
     }
 
