@@ -197,7 +197,12 @@ export const getSavedJobs = currentUser => {
 export const updateOnboarding = (user, training) => {
     switch (training) {
         case ONBOARDINGS.INTRO:
-            users[user].onboarding.intro = !users[user].onboarding.intro;
+            if (users[user].onboarding.intro === true) {
+                users[user].onboarding.intro = false;
+            } else {
+                users[user].onboarding.intro = true
+            }
+            // users[user].onboarding.intro = !users[user].onboarding.intro;
             break;
         case ONBOARDINGS.SEARCHED:
             users[user].onboarding.searched = true;

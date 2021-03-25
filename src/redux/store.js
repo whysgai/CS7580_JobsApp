@@ -19,12 +19,12 @@ import { jobs } from "../data/data";
                 return INITIAL_STATE;
             case UPDATE_ONBOARDING:
                 let newBool;
-                if (state.user.onboarding[action.payload.onboarding]) {
+                if (state.user.onboarding[action.payload.onboarding] === true) {
                     newBool = false;
                 } else {
                     newBool = true;
                 }
-                console.log("Update onboarding", action.payload.onboarding, "from", state.user.onboarding[action.payload.onboarding]);                
+                console.log("Update onboarding", newBool, "from", state.user.onboarding[action.payload.onboarding]);                
                 return {
                     ...state,
                     user: {
