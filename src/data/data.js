@@ -137,11 +137,12 @@ export const getJobs = languages => {
         let returnJobs = [];
         for (let job of jobs) {
             for (let lang of languages) {
-                if (job.languages.includes(lang)) {
+                if (job.languages.includes(lang) && !returnJobs.includes(job)) {
                     returnJobs.push(job);
                 }
             }
         }
+        console.log("Returning jobs", returnJobs);
         return returnJobs;
     }    
 };

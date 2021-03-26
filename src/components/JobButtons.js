@@ -21,10 +21,14 @@ const JobButtons = () => {
             setSelectedLanguages([]);
         } else {
             let langs = [];
-            for (let sl of selectedLanguages) {
-                langs.push(sl);
+            if (selectedLanguages.includes(language)) {
+                langs = selectedLanguages.filter(lang => lang !== language);
+            } else {
+                for (let sl of selectedLanguages) {
+                    langs.push(sl);
+                }
+                langs.push(language);
             }
-            langs.push(language);
             setSelectedLanguages(langs);
         }
         if (!user.onboarding.searched) {
@@ -32,36 +36,45 @@ const JobButtons = () => {
         }
     };
 
+    const all = () => {
+        updateSelectedJobs("All");
+        let boxes = document.getElementsByClassName("btn-check");
+        for (let box of boxes) {
+           box.checked = false;
+        }
+    }
+
     return (
         <div className="job-buttons">
             <div className="btn-group filter-buttons" role="group" aria-label="Basic checkbox toggle button group"> 
                 {
                     Object.keys(LANGUAGES).map((lang, index) =>
-                        <div key={index} className="btn btn-outline-primary">
-                            
-                            <label className="" autoComplete="off"
+                        <>    
+                            <input type="checkbox" name="languageSelection" 
+                                className="btn-check" id={`languageCheck${index}`} 
+                                onChange={() => updateSelectedJobs(LANGUAGES[lang])}
+                            />                          
+                            <label key={index} className="btn btn-outline-primary" autoComplete="off"
                                 htmlFor={`languageCheck${index}`}
                             >
                                 {LANGUAGES[lang]}       
                             </label>
-                            <input type="checkbox" name="languageSelection" 
-                                className="btn-check" id={`languageCheck${index}`} 
-                                onChange={() => updateSelectedJobs(LANGUAGES[lang])}
-                            />    
-                        </div>
+                              
+                        </>
                     )
                 }
-                <div className="btn btn-outline-primary">
-                    <label className="" autoComplete="off"
-                        htmlFor="languageRadioAll"
-                    >
-                        All                        
-                    </label>
-                    <input type="checkbox" name="languageSelection" 
+                <button className="btn btn-outline-primary" onClick={() => all()}>
+                    All
+                    {/* <input type="checkbox" name="languageSelection" 
                         className="btn-check" id="languageRadioAll" 
                         onChange={() => updateSelectedJobs("All")}
                     />
-                </div>
+                    <label className="btn btn-outline-primary" autoComplete="off"
+                        htmlFor="languageRadioAll"
+                    >
+                        All                        
+                    </label> */}
+                </button>
             </div>
             <span>
                 <SortButton />
