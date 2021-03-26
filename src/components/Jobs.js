@@ -2,8 +2,6 @@ import { useSelector } from "react-redux";
 import JobButtons from "../components/JobButtons";
 import Job from "../components/Job";
 
-
-
 const Jobs = () => {
 
     const jobs = useSelector(state => state.jobs);   

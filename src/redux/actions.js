@@ -1,5 +1,5 @@
-import { LOGIN_SUCCESS, INVALID_LOGIN, LOGIN_NETWORK_ERROR, LOGOUT_SUCCESS,
-    READ_JOBS, SAVE_JOB, READ_SAVED_JOBS, SORT_JOBS, UPDATE_ONBOARDING } from './actionConstants';
+import { LOGIN_SUCCESS, INVALID_LOGIN, LOGOUT_SUCCESS,
+    READ_JOBS, SAVE_JOB, SORT_JOBS, UPDATE_ONBOARDING } from './actionConstants';
 import { login, getJobs, saveJob, unsaveJob, getSavedJobs, updateOnboarding } from "../data/data";
 import store from "./store"
 
@@ -27,7 +27,6 @@ export const logout = () => ({
 });
 
 export const setOnboarding = (onboarding, value) => {
-    console.log("Action setOnboarding", onboarding);
     const id = store.getState().user.id;
     updateOnboarding(id, onboarding, value);
     return {
@@ -42,7 +41,6 @@ export const setOnboarding = (onboarding, value) => {
 export const readJobs = (languages) => {
     let jobs = [];
     if (languages !== null) {
-        console.log("Action: getting jobs with lang", languages);
         jobs = getJobs(languages);        
     } else {
         const userId = store.getState().user.id;
@@ -59,10 +57,8 @@ export const readJobs = (languages) => {
 export const toggleSaved = (saved, jobId) => {
     const userId = store.getState().user.id;
     if (saved) {
-        console.log("Action unsave job");
         unsaveJob(userId, jobId);
     } else {
-        console.log("Action save job");
         saveJob(userId, jobId);
     }
     return {
@@ -76,7 +72,6 @@ export const toggleSaved = (saved, jobId) => {
 };
 
 export const sortBySaves = () => {
-    console.log("Sorting by saves");
     return {
         type: SORT_JOBS
     }

@@ -38,7 +38,6 @@ const Job = (props) => {
     };
 
     const saveJob = (val, id) => {
-        console.log("Saving job. Id " + "  val " + val);
         dispatch(toggleSaved(val, id));
         if (!user.onboarding.saved) {
             dispatch(setOnboarding(ONBOARDINGS.SAVED, true));
@@ -79,7 +78,6 @@ const Job = (props) => {
                                     <button
                                         className="btn btn-secondary save-button"
                                         onClick={() => saveJob(true, props.job.id)}
-                                        //onClick={() => dispatch(toggleSaved(true, props.job.id))}
                                     >
                                         Saved&nbsp;
                                         <FontAwesomeIcon icon={faCheckSquare} aria-hidden="true" />
@@ -88,7 +86,6 @@ const Job = (props) => {
                                     <button
                                         className="btn btn-outline-secondary save-button" 
                                         onClick={() => saveJob(false, props.job.id)}
-                                        //onClick={() => dispatch(toggleSaved(false, props.job.id))}
                                     >
                                         Save&nbsp;
                                         <FontAwesomeIcon icon={faSquare} aria-hidden="true" />

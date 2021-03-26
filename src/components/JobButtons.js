@@ -1,40 +1,21 @@
 import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Tooltip } from "bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSortAmountDown } from "@fortawesome/free-solid-svg-icons";
 import { LANGUAGES, ONBOARDINGS } from "../data/data";
-import { sortBySaves, readJobs, setOnboarding } from "../redux/actions";
+import { readJobs, setOnboarding } from "../redux/actions";
 import SortButton from "./SortButton";
 
 const JobButtons = () => {
     const user = useSelector(state => state.user);
     const dispatch = useDispatch();
     const [selectedLanguages, setSelectedLanguages] = useState([]);    
-    const [tooltipOpen, toggleTooltip] = useState(false);
-    const tooltipRef = useRef();
+    // const [tooltipOpen, toggleTooltip] = useState(false);
+    // const tooltipRef = useRef();
 
     // Fetch jobs when the selectedLanguages are updated
     useEffect(() => {
         console.log("New selected languages", selectedLanguages);
         dispatch(readJobs(selectedLanguages));
     }, [selectedLanguages]);
-
-    // Tooltip useEffect
-    // useEffect(() => {
-    //     let tooltip = tooltipRef.current;
-    //     let bsTooltip = Tooltip.getInstance(tooltip)
-    //     if (!bsTooltip) {
-    //         bsTooltip = new Tooltip(tooltip);
-    //     }
-    //     else {
-    //         if (user.onboarding.sorted) {
-    //             bsTooltip.hide();
-    //         } else {
-    //             tooltipOpen ? bsTooltip.show() : bsTooltip.hide();
-    //         }
-    //     }
-    // });
 
     // Add selected jobs to new array (deep copy) before fetching from server
     const updateSelectedJobs = (language) => {
@@ -52,14 +33,6 @@ const JobButtons = () => {
             dispatch(setOnboarding(ONBOARDINGS.SEARCHED));
         }
     };
-
-    // // Sort the jobs and update user variable for tooltip
-    // const sortJobs = () => {
-    //     dispatch(sortBySaves());
-    //     if (!user.onboarding.sorted) {
-    //         dispatch(setOnboarding(ONBOARDINGS.SORTED));
-    //     }        
-    // };
 
     return (
         <div className="job-buttons">

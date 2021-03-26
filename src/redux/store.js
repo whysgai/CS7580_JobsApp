@@ -1,9 +1,8 @@
-import {bindActionCreators, createStore} from "redux";
+import { createStore } from "redux";
 import _ from "lodash";
 import {INITIAL_STATE, LOGIN_STATE} from "./storeConstants";
-import { LOGIN_SUCCESS, INVALID_LOGIN, LOGIN_NETWORK_ERROR, LOGOUT_SUCCESS,
-    READ_JOBS, SAVE_JOB, READ_SAVED_JOBS, SORT_JOBS, UPDATE_ONBOARDING } from './actionConstants';
-import { jobs } from "../data/data";
+import { LOGIN_SUCCESS, INVALID_LOGIN, LOGOUT_SUCCESS,
+    READ_JOBS, SAVE_JOB, SORT_JOBS, UPDATE_ONBOARDING } from './actionConstants';
 
     const rootReducer = (state = INITIAL_STATE, action) => {
         switch (action.type) {
@@ -18,7 +17,6 @@ import { jobs } from "../data/data";
             case LOGOUT_SUCCESS:
                 return INITIAL_STATE;
             case UPDATE_ONBOARDING:
-                console.log("Update onboarding", action.payload.value, "from", state.user.onboarding[action.payload.onboarding]);                
                 return {
                     ...state,
                     user: {
@@ -35,10 +33,6 @@ import { jobs } from "../data/data";
                     jobs: action.payload.jobs
                 }  
             case SAVE_JOB:
-                console.log("Reducer calling SAVE_JOB");
-                console.log("Saved", action.payload.saved);
-                console.log("Job", action.payload.job);
-                console.log("User " + state.user.id);
                 for (let save of state.user.saved) {console.log(save)};
                 if (action.payload.saved) {                    
                     return {
@@ -49,7 +43,6 @@ import { jobs } from "../data/data";
                         },
                         jobs : state.jobs.map(job => {
                             if (action.payload.job === job.id) {
-                                console.log("Updating job " + job.id + " saves to " + (job.saves - 1))
                                 job.saves -= 1;
                             }
                             return job;
@@ -66,7 +59,6 @@ import { jobs } from "../data/data";
                         },
                         jobs : state.jobs.map(job => {
                                 if (action.payload.job === job.id) {
-                                    console.log("Updating job " + job.id + " saves to " + (job.saves + 1))
                                     job.saves += 1;
                                 }
                                 return job;
@@ -82,7 +74,6 @@ import { jobs } from "../data/data";
                     for (let job of sorted) {
                         deepSorted.push(job);
                     };
-                    console.log("Sorted jobs:", deepSorted);
                     return {
                         ...state,
                         jobs: deepSorted
